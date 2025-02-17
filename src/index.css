@@ -1,0 +1,28 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: outfit;
+}
+
+h1,h2,h3,p{
+  margin: 0;
+  padding: 0;
+}
+
+.login-div{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  gap: 10px;
+  
+}
+
+.login-div button{
+ letter-spacing: 2px;
+}
+.login-div p{
+  margin-top: 4px;
+  text-decoration: underline;
+  cursor: pointer;
+}

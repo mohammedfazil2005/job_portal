@@ -1,0 +1,86 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 100px;    
+    align-items: center;
+}
+.header-content{
+    margin-top: 60px;
+}
+.header-content h6{
+    color: lightgray;
+    letter-spacing: 1px;
+}
+.header-content p{
+    color: lightgray;
+    margin-top: 20px;
+    width: 400px;
+}
+.header-content h1{
+    font-size: 60px;
+    color: white;
+    width: 470px;
+    letter-spacing: 2px;
+}
+.header-content h1 span{
+    color: dodgerblue;
+}
+.header-content button{
+    margin: 50px 0px;
+    width: 250px;
+    border-radius: 40px;
+    padding: 10px;
+    border: none;
+    background-color: white;
+    font-weight: 500;
+    outline: none;
+    box-shadow: 0px 0px 3px white;
+}
+    
+
+.header-img-parent{
+    display: flex;
+    gap: 20px;
+}
+.header-img-parent img{
+    width: 150px;
+}
+
+@media screen and (max-width:865px) {
+    .header{
+      margin: 0px 50px;
+    }   
+}
+@media screen and (max-width:790px) {
+    .header{
+      flex-direction: column;
+      align-items: start;
+    }   
+    .header-img-parent{
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (max-width:531px) {
+    .header-content p{
+        color: lightgray;
+        margin-top: 20px;
+        width: 100%;
+        font-size: 15px;
+    }
+    .header-content h1{
+        font-size: 40px;
+        color: white;
+        width: 100%;
+        letter-spacing: 2px;
+    }
+    .header-content h6{
+        color: lightgray;
+        letter-spacing: 1px;
+        font-size: 12px;
+    }
+    .header-img-parent img{
+        width: 100px;
+    }
+}

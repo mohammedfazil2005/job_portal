@@ -1,0 +1,35 @@
+.footer-heading{
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 100px;
+}
+.footer-heading div{
+    margin-bottom: 10px;
+}
+.footer-heading div p{
+    
+    width: 300px;
+}
+.footer-heading-left p{
+    font-size: 27px;
+    color: white;
+}
+.footer-heading-right p{
+    color: lightgray;
+}
+
+@media screen and (max-width:865px) {
+    .footer-heading{
+     flex-direction: column;
+    }   
+    
+}
+
+@media screen and (max-width:727px) {
+    .footer-heading{
+      margin: 0px 50px;
+    }   
+    .footer-heading div p{
+        width: 100%;
+    }
+}

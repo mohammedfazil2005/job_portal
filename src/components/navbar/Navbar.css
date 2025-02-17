@@ -1,0 +1,33 @@
+nav{
+    background: radial-gradient(9% 55% at 1.19% 99.1%, black 0%, rgb(0, 3, 15) 100%);
+    color: rgba(255, 255, 255, 0.558);
+}
+nav img{
+    width: 40px;
+}
+nav form{
+    display: flex;
+    gap: 10px;
+
+}
+.login-btn-fiv {
+    display: flex;
+    gap: 10px;
+}
+.login-btn-fiv button{
+
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-bottom: 1px solid white;
+    
+}
+.login-btn-fiv i{
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.558);
+   
+}
+nav ul li{
+    margin: 0px 10px;
+    cursor: pointer;
+}
