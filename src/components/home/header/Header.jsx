@@ -1,14 +1,15 @@
 import React from 'react'
 import './Header.css'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
     <div className='header'>
       <div className='header-content'>
-        <h6><i class="fa-regular fa-star"></i>Find Jobs,Employment & Career</h6>
+        <h6><i className="fa-regular fa-star"></i>Find Jobs,Employment & Career</h6>
         <h1>Get a <span>Job</span> that Perfect for <span>you</span></h1>
         <p>"Explore thousands of job opportunities tailored to your skills and passion, and take the next step in your career today!</p>
-        <button>FIND JOB</button>
+       <Link to={'/job'}><button>FIND JOB</button></Link>
       </div>
       <div className='header-img-parent'>
         <div>

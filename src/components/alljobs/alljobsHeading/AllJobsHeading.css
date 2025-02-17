@@ -1,0 +1,44 @@
+.all-job-heading-parent{
+    background: radial-gradient(9% 55% at 1.19% 99.1%, black 0%, rgb(0, 3, 15) 100%);
+
+
+}
+
+.all-job-heading-row{
+    display: flex;
+    flex-direction: column;
+    margin: 0px 20px;
+    gap: 20px;
+ 
+}
+.all-job-heading-row h1{
+    color: white;
+    letter-spacing: 1px;
+    margin-top: 30px;
+    font-weight: 300;
+}
+
+.all-job-heading-row div{
+    margin-bottom: 20px;
+    display: flex;
+    padding: 2px;
+    align-items: center;
+}
+
+.all-job-heading-row div input{
+    width: 100%;
+    padding: 15px;
+    outline: none;
+    border: none;
+    border-radius: 40px;
+}
+.all-job-heading-row div button{
+    padding: 12px;
+    position: relative;
+    right: 97px;
+    color: white;
+    background-color: dodgerblue;
+    border-radius: 40px;
+    border: none;
+    width: 100px;
+}

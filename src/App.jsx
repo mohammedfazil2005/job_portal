@@ -2,11 +2,12 @@ import React, { useState } from "react"
 import Navbar from "./components/navbar/Navbar"
 import { Route, Routes } from "react-router-dom"
 import Home from "./components/home/Home"
-import Login from "./components/login/Login"
+
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
+import AllJobs from "./components/alljobs/AllJobs";
 
 function App() {
   const [show, setShow] = useState(false);
@@ -29,7 +30,7 @@ function App() {
     <Navbar setShow={setShow}/>
     <Routes>
       <Route path="/" element={<Home/>}/>
-      <Route path="/login" element={<Login/>}/>
+      <Route path="/jobs" element={<AllJobs/>}/>
     </Routes>
 
 
@@ -70,6 +71,7 @@ function App() {
       </FloatingLabel>
      
       <div className="login-div">
+    
       <Button variant="light">{loginOrRegister=="login"?"Login":"Register"}</Button>
         <p onClick={modalChanging}>{loginOrRegister=="login"?"Already have an account?":"Doesn't have an account?"}</p>
       </div>

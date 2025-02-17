@@ -26,3 +26,7 @@ h1,h2,h3,p{
   text-decoration: underline;
   cursor: pointer;
 }
+a{
+  text-decoration: none;
+  color: inherit;
+}
