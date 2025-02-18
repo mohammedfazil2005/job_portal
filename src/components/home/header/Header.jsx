@@ -9,7 +9,7 @@ const Header = () => {
         <h6><i className="fa-regular fa-star"></i>Find Jobs,Employment & Career</h6>
         <h1>Get a <span>Job</span> that Perfect for <span>you</span></h1>
         <p>"Explore thousands of job opportunities tailored to your skills and passion, and take the next step in your career today!</p>
-       <Link to={'/job'}><button>FIND JOB</button></Link>
+       <Link to={'/jobs'}><button>FIND JOB</button></Link>
       </div>
       <div className='header-img-parent'>
         <div>

@@ -1,0 +1,14 @@
+.heading-job-content{
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 60px;
+    margin-top: 30px;
+
+}
+.heading-job-content h1{
+    font-weight: 400;
+}
+.main-job-content{
+    display: flex;
+    justify-content: space-between;
+}

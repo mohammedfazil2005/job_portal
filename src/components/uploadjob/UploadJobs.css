@@ -1,0 +1,90 @@
+.upload-job-parent{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0px 60px;
+}
+
+.upload-job-heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.upload-job-heading img{
+    width: 100px;
+}
+.form-div{
+    display: flex;
+    flex-direction: column;
+}
+
+.job-title{
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
+.job-title input{
+    width: 100%;
+}
+
+.logo{
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    align-items: center;
+}
+.logo select{
+    padding: 19px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border: none;
+    outline: none;
+    margin-top: -7px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.7px;
+}
+.job-location{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+}
+
+.skills-required{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+.salary-job{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-box{
+    border-bottom: 1px solid lightgray;
+}
+.upload-job-parent label{
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.7px;
+}
+
+@media screen and (max-width:683px) {
+    .job-title,.logo,.skills-required,.salary-job,.job-location{
+        flex-direction: column;
+    }
+    .upload-job-parent{
+        margin: 0px 30px;
+    }
+    .upload-job-heading{
+        flex-direction: column-reverse;
+    }
+}
