@@ -39,7 +39,7 @@ const UploadJobs = () => {
                         <Form.Control className='input-box' type="text" placeholder="Company Logo" />
                     </FloatingLabel>
                     <select name="" id="" className='w-100'>
-                        <option value="" disabled>Select type</option>
+                        <option value="" disabled selected>Select type</option>
                         <option value="">Full time</option>
                         <option value="">Part time</option>
                         <option value="">Internship</option>

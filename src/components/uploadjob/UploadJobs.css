@@ -69,7 +69,8 @@
 }
 
 .input-box{
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid gray;
+    cursor: pointer;
 }
 .upload-job-parent label{
     text-transform: uppercase;

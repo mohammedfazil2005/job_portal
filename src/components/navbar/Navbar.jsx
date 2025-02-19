@@ -20,7 +20,7 @@ const Navbar = ({setShow}) => {
                         </ul>
                          <div className="login-btn-fiv">
                             <button  onClick={handleShow}>Login</button>
-                          <i className="fa-regular fa-user"></i>
+                         <Link to={'/profile'}><i className="fa-regular fa-user"></i></Link> 
                             </div>
                     </div>
                 </div>

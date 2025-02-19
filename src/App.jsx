@@ -9,6 +9,8 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import AllJobs from "./components/alljobs/AllJobs";
 import UploadJobs from "./components/uploadjob/UploadJobs";
+import Profile from "./components/profile/Profile";
+import Footer from "./components/footer/Footer";
 
 function App() {
   const [show, setShow] = useState(false);
@@ -33,7 +35,10 @@ function App() {
       <Route path="/" element={<Home/>}/>
       <Route path="/jobs" element={<AllJobs/>}/>
       <Route path="/uploadjobs" element={<UploadJobs/>}/>
+      <Route path="/profile" element={<Profile/>}/>
     </Routes>
+    <hr />
+    <Footer/>
 
 
 
