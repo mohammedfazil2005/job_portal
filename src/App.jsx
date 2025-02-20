@@ -11,31 +11,24 @@ import AllJobs from "./components/alljobs/AllJobs";
 import UploadJobs from "./components/uploadjob/UploadJobs";
 import Profile from "./components/profile/Profile";
 import Footer from "./components/footer/Footer";
+import Login from "./components/login/Login";
+import { ToastContainer, toast } from 'react-toastify';
 
 function App() {
   const [show, setShow] = useState(false);
-
-  const [loginOrRegister,setLoginOrRegister]=useState("login")
-
-  const modalChanging=()=>{
-    if(loginOrRegister=="login"){
-      setLoginOrRegister("register")
-    }else{
-      setLoginOrRegister("login")
-    }
-  }
-  console.log(loginOrRegister)
-
-  const handleClose = () => setShow(false);
+  const [showProfile,setShowProfile]=useState("")
+ 
 
   return (
     <>
-    <Navbar setShow={setShow}/>
+    <ToastContainer />
+    <Login show={show} setShow={setShow} setShowProfile={setShowProfile} />
+    <Navbar setShow={setShow} showProfile={showProfile}/>
     <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="/jobs" element={<AllJobs/>}/>
       <Route path="/uploadjobs" element={<UploadJobs/>}/>
-      <Route path="/profile" element={<Profile/>}/>
+      <Route path="/profile" element={<Profile/>} />
     </Routes>
     <hr />
     <Footer/>
@@ -47,45 +40,10 @@ function App() {
 
 
 
+
     
 
-    <Modal show={show} onHide={handleClose} >
-        <Modal.Header closeButton>
-          <Modal.Title>{loginOrRegister=="login"?"Login!":"Register now!"}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body >
-
-          {loginOrRegister=="register"&&(
-             <FloatingLabel
-             controlId="floatingInput"
-             label="username"
-             className="mb-3"
-           >
-             <Form.Control type="email" placeholder="username" />
-           </FloatingLabel>
-          )}
-          
-        <FloatingLabel
-        controlId="floatingInput"
-        label="Email address"
-        className="mb-3"
-      >
-        <Form.Control type="email" placeholder="name@example.com" />
-      </FloatingLabel>
-      
-      <FloatingLabel controlId="floatingPassword" label="Password">
-        <Form.Control type="password" placeholder="Password" />
-      </FloatingLabel>
-     
-      <div className="login-div">
     
-      <Button variant="light">{loginOrRegister=="login"?"Login":"Register"}</Button>
-        <p onClick={modalChanging}>{loginOrRegister=="login"?"Already have an account?":"Doesn't have an account?"}</p>
-      </div>
-      
-        </Modal.Body>
-        
-      </Modal>
     </>
   )
 }

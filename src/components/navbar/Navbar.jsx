@@ -1,9 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Navbar.css'
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-const Navbar = ({setShow}) => {
+const Navbar = ({setShow,showProfile}) => {
      const handleShow = () => setShow(true);
+     const [id,setId]=useState(false)
+
+     const isIdExists=()=>{
+        let idLocalStorage=localStorage.getItem("id")
+        if(idLocalStorage){
+            setId(true)
+        }else{
+            setId(false)
+        }
+     }
+
+     const onLogout=()=>{
+        localStorage.removeItem("id")
+        toast.success("Logged out!")
+        isIdExists()
+     }
+
+     useEffect(()=>{
+        isIdExists()
+     },[showProfile])
+
+
     return (
         <div className='sticky-top'>
             <nav className="navbar navbar-expand-lg ">
@@ -19,7 +42,7 @@ const Navbar = ({setShow}) => {
                           
                         </ul>
                          <div className="login-btn-fiv">
-                            <button  onClick={handleShow}>Login</button>
+                            {id?<button onClick={onLogout}>Logout</button>:<button  onClick={handleShow}>Login</button>}
                          <Link to={'/profile'}><i className="fa-regular fa-user"></i></Link> 
                             </div>
                     </div>
