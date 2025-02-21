@@ -3,7 +3,7 @@ import './Navbar.css'
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const Navbar = ({setShow,showProfile}) => {
+const Navbar = ({setShow,showProfile,setUserLogin}) => {
      const handleShow = () => setShow(true);
      const [id,setId]=useState(false)
 
@@ -20,6 +20,7 @@ const Navbar = ({setShow,showProfile}) => {
         localStorage.removeItem("id")
         toast.success("Logged out!")
         isIdExists()
+        setUserLogin("Logout!")
      }
 
      useEffect(()=>{

@@ -56,23 +56,31 @@ const Login = ({show,setShow,setShowProfile}) => {
 
     if(userData.email&&userData.password){
         try {
-            const serverResponce=await userLogin()
-            let findEmail=serverResponce.data.find((a)=>a['email']==userData.email)
-            if(findEmail){
-                if(findEmail.password==userData.password){
-                    console.log("Success")
-                    localStorage.setItem("id",findEmail.id)
-                    toast.success("Login success!")
-                    setShowProfile(findEmail)
-                    setShow(false)
-                    setError("")
-                 }else{
-                     console.log("Invalid credintials")
-                     setError("Invalid credintials!")
-                 }
-            }else{
-                setError("No account found!")
-            }
+
+          const serverResponce=await userLogin()
+          console.log(serverResponce)
+          let isEmailExists=serverResponce.data.find((a)=>a.userData.email==userData.email)
+          console.log(isEmailExists)
+          if(isEmailExists){
+            let isValidPassword=isEmailExists.userData.password==userData.password
+           if(isValidPassword){
+            localStorage.setItem("id",isEmailExists.id)
+            setError("")
+            setShowProfile(isEmailExists)
+            toast.success("Login success")
+            setShow(false)
+           }else{
+            setError("Invalid Credintials")
+           
+           }
+          }else{
+            console.log("No account Found")
+            setError("No account found!")
+          }
+          
+
+
+
         } catch (error) {
             console.log(error)
         }
@@ -125,7 +133,7 @@ const Login = ({show,setShow,setShowProfile}) => {
       <div className="login-div">
     
       <Button onClick={onLogin} variant="light">{loginOrRegister=="login"?"Login":"Register"}</Button>
-        <p onClick={modalChanging}>{loginOrRegister=="login"?"Already have an account?":"Doesn't have an account?"}</p>
+        <p onClick={modalChanging}>{loginOrRegister=="login"?"Doesn't have an account?":"Already have an account?"}</p>
       </div>
       
         </Modal.Body>
