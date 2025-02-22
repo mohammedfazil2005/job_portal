@@ -3,7 +3,7 @@ import './Navbar.css'
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const Navbar = ({setShow,showProfile,setUserLogin}) => {
+const Navbar = ({setShow,showProfile,setUserLogin,userLogin}) => {
      const handleShow = () => setShow(true);
      const [id,setId]=useState(false)
 
@@ -16,11 +16,14 @@ const Navbar = ({setShow,showProfile,setUserLogin}) => {
         }
      }
 
+   
+
      const onLogout=()=>{
         localStorage.removeItem("id")
         toast.success("Logged out!")
-        isIdExists()
         setUserLogin("Logout!")
+        isIdExists()
+       
      }
 
      useEffect(()=>{
@@ -45,6 +48,7 @@ const Navbar = ({setShow,showProfile,setUserLogin}) => {
                          <div className="login-btn-fiv">
                             {id?<button onClick={onLogout}>Logout</button>:<button  onClick={handleShow}>Login</button>}
                          <Link to={'/profile'}><i className="fa-regular fa-user"></i></Link> 
+                       
                             </div>
                     </div>
                 </div>

@@ -24,12 +24,12 @@ function App() {
     <>
     <ToastContainer />
     <Login show={show} setShow={setShow} setShowProfile={setShowProfile}  />
-    <Navbar setShow={setShow} showProfile={showProfile} setUserLogin={setUserLogin}/>
+    <Navbar setShow={setShow} showProfile={showProfile} setUserLogin={setUserLogin} />
     <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="/jobs" element={<AllJobs/>}/>
       <Route path="/uploadjobs" element={<UploadJobs/>}/>
-      <Route path="/profile" element={<Profile/>} userLogin={userLogin}/>
+      <Route path="/profile" element={<Profile userLogin={userLogin}/>} />
     </Routes>
     <hr />
     <Footer/>
