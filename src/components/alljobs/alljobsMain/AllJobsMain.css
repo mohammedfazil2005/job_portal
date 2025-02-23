@@ -66,6 +66,17 @@
 .job-salary-details p i{
     margin: 0px 3px;
 }
+.error-image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 300px;
+}
+.error-image img{
+    width: 400px;
+}
+
+
 @media screen and (max-width:986px) {
     .job-box-row{
         display: flex;

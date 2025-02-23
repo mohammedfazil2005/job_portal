@@ -10,7 +10,9 @@ const AllJobsHeading = ({setSearch}) => {
   const onSearch=()=>{
     if(value){
       setSearch(value)
+      
     }
+    setValue("")
   }
 
 
@@ -29,7 +31,7 @@ const AllJobsHeading = ({setSearch}) => {
         className="mb-2 w-100"
         
       >
-        <Form.Control type="text" placeholder="Job title or Keyword" style={{borderRadius:'70px'}} onChange={(e)=>setValue(e.target.value)} />
+        <Form.Control type="text"  value={value} placeholder="Job title or Keyword" style={{borderRadius:'70px'}} onChange={(e)=>setValue(e.target.value)} />
       </FloatingLabel>
       <button onClick={onSearch}><i className="fa-solid fa-magnifying-glass"></i></button>
         </div>

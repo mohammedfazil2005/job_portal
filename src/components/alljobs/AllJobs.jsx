@@ -7,7 +7,7 @@ const AllJobs = () => {
   return (
     <div style={{    backgroundColor: "whitesmoke"}}>
       <AllJobsHeading setSearch={setSearch}/>
-      <AllJobsContent search={search}/>
+      <AllJobsContent search={search} setSearch={setSearch}/>
     </div>
   )
 }

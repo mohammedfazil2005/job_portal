@@ -4,7 +4,7 @@ import './AllJobsContent.css'
 import AllJobsMain from '../alljobsMain/AllJobsMain'
 import AllJobsCategory from '../alljobscategory/AllJobsCategory'
 
-const AllJobsContent = ({search}) => {
+const AllJobsContent = ({search,setSearch}) => {
   return (
     <div>
       <div className='heading-job-content'>
@@ -13,7 +13,7 @@ const AllJobsContent = ({search}) => {
       </div>
       <div className='main-job-content'>
       <AllJobsCategory/>
-      <AllJobsMain search={search}/>
+      <AllJobsMain search={search} setSearch={setSearch}/>
       
       </div>
       
