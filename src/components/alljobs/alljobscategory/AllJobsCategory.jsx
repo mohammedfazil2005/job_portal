@@ -9,11 +9,11 @@ const AllJobsCategory = () => {
     <div className='category-parent'>
         <div className="category-heading">
             <h6>Job Type</h6>
-            <p>Clear all</p>
+        
         </div>
         <div className="category-list">
-            {tempCategoryData.map((a)=>(
-                <p>{a}</p>
+            {tempCategoryData.map((a,index)=>(
+                <p key={index}>{a}</p>
             ))}
         </div>
      

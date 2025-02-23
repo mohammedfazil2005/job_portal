@@ -3,7 +3,7 @@
     flex-wrap: wrap;
     gap: 10px;
     margin: 0px 20px;
-    margin-top: 50px;
+    margin-top: 10px;
    
   
    
@@ -26,8 +26,8 @@
 
 }
 .job-heading img{
-    width: 60px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
 }
 .job-heading-content{
     display: flex;
@@ -60,8 +60,8 @@
 }
 
 .job-salary-details h1{
-    font-size: 23px;
-    font-weight: bold;
+    font-size: 13px;
+    font-weight: 500;
 }
 .job-salary-details p i{
     margin: 0px 3px;
@@ -91,13 +91,18 @@
         border-radius: 10px;
         
     }
+    .job-box-container{
+        flex-direction: column;
+    }
     
 }
 
 
-@media screen and (max-width:484px) {
+
+
+@media screen and (max-width:464px) {
     .job-description p{
-        font-size: 11px;
+        font-size: 12px;
     }
     .job-salary-details p{
         font-size: 14px;
@@ -106,7 +111,7 @@
         font-size: 15px;
     }
     .job-heading-content h6{
-        font-size: 8px;
+        font-size: 9px;
     }
     .job-time button{
         background-color: rgba(30, 143, 255, 0.5);
@@ -115,5 +120,35 @@
         border-radius: 10px;
         color: white;
     }
+    .job-salary-details p {
+        font-size: 9px;
+    }
+}
+
+
+@media screen and (max-width:417px) {
+    .job-description p{
+        font-size: 12px;
+    }
+   
+    .job-heading-content h1{
+        font-size: 10px;
+    }
+    .job-heading img{
+        width: 30px;
+        height: 30px;
+    }
+    .job-time button{
+        background-color: rgba(30, 143, 255, 0.5);
+        padding: 1px 6px;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-size: 12px;
+    }
+    
+    
+   
+   
     
 }

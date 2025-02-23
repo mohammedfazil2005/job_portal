@@ -4,7 +4,7 @@ import './AllJobsContent.css'
 import AllJobsMain from '../alljobsMain/AllJobsMain'
 import AllJobsCategory from '../alljobscategory/AllJobsCategory'
 
-const AllJobsContent = () => {
+const AllJobsContent = ({search}) => {
   return (
     <div>
       <div className='heading-job-content'>
@@ -13,7 +13,7 @@ const AllJobsContent = () => {
       </div>
       <div className='main-job-content'>
       <AllJobsCategory/>
-      <AllJobsMain/>
+      <AllJobsMain search={search}/>
       
       </div>
       

@@ -12,3 +12,20 @@ export const userProfile=async(id)=>{
 export const userProfileUpdate=async(id,updatedDetails)=>{
     return await axiosConnection("put",`/users/${id}`,updatedDetails)
 }
+
+export const fetchUserAddedJobs=async(id)=>{
+    return await axiosConnection("get",`/users/${id}`,"")
+}
+
+export const userAddedJobs=async(id,jobDetails)=>{
+    return await axiosConnection("put",`/users/${id}`,jobDetails)
+}
+
+export const allJobsAdded=async(jobDetails)=>{
+    return await axiosConnection("post",'/jobs',jobDetails)
+}
+
+
+export const fetchAllJobs=async()=>{
+    return await axiosConnection("get",'/jobs',"")
+}

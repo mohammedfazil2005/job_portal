@@ -17,19 +17,20 @@ import { ToastContainer, toast } from 'react-toastify';
 function App() {
   const [show, setShow] = useState(false);
   const [showProfile,setShowProfile]=useState("")
-  const [userLogin,setUserLogin]=useState("")
+  const [logout,setLogout]=useState("")
+  const userID=localStorage.getItem("id")
  
 
   return (
     <>
     <ToastContainer />
     <Login show={show} setShow={setShow} setShowProfile={setShowProfile}  />
-    <Navbar setShow={setShow} showProfile={showProfile} setUserLogin={setUserLogin} />
+    <Navbar setShow={setShow} logout={logout} setLogout={setLogout} showProfile={showProfile}/>
     <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="/jobs" element={<AllJobs/>}/>
-      <Route path="/uploadjobs" element={<UploadJobs/>}/>
-      <Route path="/profile" element={<Profile userLogin={userLogin}/>} />
+      <Route path="/uploadjobs" element={<UploadJobs userID={userID}/>}/>
+      <Route path="/profile" element={<Profile  showProfile={showProfile} logout={logout}/>} />
     </Routes>
     <hr />
     <Footer/>

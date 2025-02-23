@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './AllJobsHeading.css'
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-const AllJobsHeading = () => {
+const AllJobsHeading = ({setSearch}) => {
+
+  const [value,setValue]=useState("")
+
+  const onSearch=()=>{
+    if(value){
+      setSearch(value)
+    }
+  }
+
+
   return (
     <div className='all-job-heading-parent sticky'>
       <div className="all-job-heading-row">
@@ -19,9 +29,9 @@ const AllJobsHeading = () => {
         className="mb-2 w-100"
         
       >
-        <Form.Control type="email" placeholder="Job title or Keyword" style={{borderRadius:'70px'}} />
+        <Form.Control type="text" placeholder="Job title or Keyword" style={{borderRadius:'70px'}} onChange={(e)=>setValue(e.target.value)} />
       </FloatingLabel>
-      <button><i className="fa-solid fa-magnifying-glass"></i></button>
+      <button onClick={onSearch}><i className="fa-solid fa-magnifying-glass"></i></button>
         </div>
       </div>
     </div>

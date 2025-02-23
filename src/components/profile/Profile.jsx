@@ -10,7 +10,7 @@ import { userProfile, userProfileUpdate } from '../../services/functionAPI';
 import { toast } from 'react-toastify';
 
 
-const Profile = ({data}) => {
+const Profile = ({showProfile,logout}) => {
   const [show, setShow] = useState(false);
   const [profile,setProfile]=useState([]);
   const[update,setUpdate]=useState([])
@@ -74,8 +74,6 @@ const Profile = ({data}) => {
         setProfile(serverResponce.data.userProfile)
         setUpdate(serverResponce.data)
       
-      }else{
-        toast.error("Login to continue")
       }
     } catch (error) {
       console.log(error)
@@ -122,11 +120,11 @@ const Profile = ({data}) => {
     }
   }
 
-
+console.log(logout)
 
   useEffect(()=>{
     fetchProfile()
-  },[])
+  },[showProfile,logout])
 
 
 
@@ -150,29 +148,29 @@ const Profile = ({data}) => {
            <h6><i className="fa-solid fa-map-pin"></i>{profile.headline?profile.headline:"Professional Headline!"}</h6>
             <h6><i className="fa-solid fa-envelope"></i>{profile.email?profile.email:"Your Email Address!"}</h6>
             <h6><i className="fa-solid fa-phone"></i>{profile.phone?profile.phone:"Your Phone Number!"}</h6>
-            <h6><i class="fa-solid fa-location-dot"></i>{profile.location?profile.location:"Your Location!"}</h6>
+            <h6><i className="fa-solid fa-location-dot"></i>{profile.location?profile.location:"Your Location!"}</h6>
            </div>
              <div className='desg-details'>
               <h3><i className="fa-solid fa-book"></i> Education</h3>
               <ul>
-              {profile.education?profile.education.split("\n").map((a)=>(
-                <li>{a}</li>
+              {profile.education?profile.education.split("\n").map((a,index)=>(
+                <li key={index}>{a}</li>
               )):""}
               </ul>
              </div>
              <div className='desg-details'>
               <h3><i className="fa-solid fa-suitcase"></i>Experience</h3>
               <ul>
-              {profile.experience?profile.experience.split("\n").map((a)=>(
-                 <li>{a}</li>
+              {profile.experience?profile.experience.split("\n").map((a,index)=>(
+                 <li key={index}>{a}</li>
               )):""}
               </ul>
              </div>
              <div className='desg-details'>
-              <h3><i class="fa-solid fa-marker"></i>Skills</h3>
+              <h3><i className="fa-solid fa-marker"></i>Skills</h3>
              <ul>
-             {profile.skills?profile.skills.split("\n").map((a)=>(
-                 <li>{a}</li>
+             {profile.skills?profile.skills.split("\n").map((a,index)=>(
+                 <li key={index}>{a}</li>
               )):""}
              </ul>
              </div>
@@ -194,7 +192,7 @@ const Profile = ({data}) => {
         className="mb-3"
       >
         <Form.Control
-        value={userData.name} type="text" placeholder="Full Name" className='' onChange={(e)=>setUserData({...userData,name:e.target.value})} />
+        value={userData.name} type="text" placeholder="Full Name"  onChange={(e)=>setUserData({...userData,name:e.target.value})} />
       </FloatingLabel>
       <FloatingLabel
         controlId="floatingInput"
@@ -202,7 +200,7 @@ const Profile = ({data}) => {
         className="mb-3"
       >
         <Form.Control
-        value={userData.headline} type="text" placeholder="Professional Headline" className='' onChange={(e)=>setUserData({...userData,headline:e.target.value})} />
+        value={userData.headline} type="text" placeholder="Professional Headline"  onChange={(e)=>setUserData({...userData,headline:e.target.value})} />
       </FloatingLabel>
 
       <FloatingLabel
@@ -211,7 +209,7 @@ const Profile = ({data}) => {
         className="mb-3"
       >
         <Form.Control
-        value={userData.email} type="text" placeholder="Email Address" className='' onChange={(e)=>setUserData({...userData,email:e.target.value})} />
+        value={userData.email} type="text" placeholder="Email Address"  onChange={(e)=>setUserData({...userData,email:e.target.value})} />
       </FloatingLabel>
 
       <FloatingLabel
@@ -220,7 +218,7 @@ const Profile = ({data}) => {
         className="mb-3"
       >
         <Form.Control
-        value={userData.phone} type="text" placeholder="Phone Number" className='' onChange={(e)=>setUserData({...userData,phone:e.target.value})} />
+        value={userData.phone} type="text" placeholder="Phone Number"  onChange={(e)=>setUserData({...userData,phone:e.target.value})} />
       </FloatingLabel>
       <FloatingLabel
         controlId="floatingInput"
@@ -228,7 +226,7 @@ const Profile = ({data}) => {
         className="mb-3"
       >
         <Form.Control
-        value={userData.location} type="text" placeholder="Location" className='' onChange={(e)=>setUserData({...userData,location:e.target.value})} />
+        value={userData.location} type="text" placeholder="Location"  onChange={(e)=>setUserData({...userData,location:e.target.value})} />
       </FloatingLabel>
 
       <FloatingLabel controlId="floatingTextarea2" label="Education">
@@ -285,7 +283,7 @@ const Profile = ({data}) => {
         className="mb-3"
       >
         <Form.Control
-        value={userData.imageURL} type="text" placeholder="Image URL" className='' onChange={(e)=>setUserData({...userData,imageURL:e.target.value})} />
+        value={userData.imageURL} type="text" placeholder="Image URL"  onChange={(e)=>setUserData({...userData,imageURL:e.target.value})} />
       </FloatingLabel>
     
 
