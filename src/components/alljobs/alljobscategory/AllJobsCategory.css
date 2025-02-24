@@ -14,10 +14,9 @@
 .category-heading h6{
     font-weight: bold;
     font-size: 20px;
+    
 }
-.category-heading p{
-    color: red;
-}
+
 .category-list{
     display: flex;
     flex-direction: column;
@@ -26,7 +25,9 @@
     font-weight: 500;
     color: gray;
 }
-
+.category-list p{
+    cursor: pointer;
+}
 @media screen and (max-width:886px) {
     .category-parent{
         display: flex;

@@ -18,7 +18,8 @@ const UploadJobs = ({userID}) => {
         jobDescription:"",
         jobSkills:"",
         jobExperienceLevel:"",
-        jobSalary:""
+        jobSalary:"",
+        jobQualification:""
     })
 
     const [allJobs,setAlljobs]=useState([])
@@ -36,6 +37,7 @@ const UploadJobs = ({userID}) => {
             jobDescription:"",
             jobSkills:"",
             jobExperienceLevel:"",
+            jobQualification:"",
             jobSalary:""
         })
     }
@@ -163,16 +165,25 @@ const UploadJobs = ({userID}) => {
                         <Form.Control value={jobData.jobExperienceLevel} className='input-box' type="text" placeholder="Experience Level" onChange={(e)=>setJobData({...jobData,jobExperienceLevel:e.target.value})} />
                     </FloatingLabel>
                 </div>
+                
                 <div className="salary-job">
                     <FloatingLabel
                         controlId="floatingTextarea"
+                        label="Qualification"
+                        className="mb-3 w-100"
+                    >
+                        <Form.Control value={jobData.jobQualification} className='input-box' type='text' placeholder="Qualification" onChange={(e)=>setJobData({...jobData,jobQualification:e.target.value})} />
+                    </FloatingLabel>
+                    <FloatingLabel
+                        controlId="floatingInput"
                         label="Salary"
                         className="mb-3 w-100"
                     >
-                        <Form.Control value={jobData.jobSalary} className='input-box' as="textarea" placeholder="Salary" onChange={(e)=>setJobData({...jobData,jobSalary:e.target.value})} />
+                        <Form.Control value={jobData.jobSalary} className='input-box' type='text' placeholder="Salary" onChange={(e)=>setJobData({...jobData,jobSalary:e.target.value})} />
                     </FloatingLabel>
-                    <Button variant="primary" className='w-100' onClick={UploadJobs}>Add job</Button>
+                    
                 </div>
+                <Button variant="primary" className='w-100' onClick={UploadJobs}>Add job</Button>
             </div>
 
         </div>

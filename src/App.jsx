@@ -13,11 +13,13 @@ import Profile from "./components/profile/Profile";
 import Footer from "./components/footer/Footer";
 import Login from "./components/login/Login";
 import { ToastContainer, toast } from 'react-toastify';
+import DisplayJob from "./components/displayjob/DisplayJob";
 
 function App() {
   const [show, setShow] = useState(false);
   const [showProfile,setShowProfile]=useState("")
   const [logout,setLogout]=useState("")
+  const [category,setCategory]=useState("")
   const userID=localStorage.getItem("id")
  
 
@@ -28,9 +30,10 @@ function App() {
     <Navbar setShow={setShow} logout={logout} setLogout={setLogout} showProfile={showProfile}/>
     <Routes>
       <Route path="/" element={<Home/>}/>
-      <Route path="/jobs" element={<AllJobs/>}/>
+      <Route path="/jobs" element={<AllJobs Uid={userID}/>}/>
       <Route path="/uploadjobs" element={<UploadJobs userID={userID}/>}/>
       <Route path="/profile" element={<Profile  showProfile={showProfile} logout={logout}/>} />
+      <Route path="/displayjob" element={<DisplayJob userID={userID}/>}/>
     </Routes>
     <hr />
     <Footer/>

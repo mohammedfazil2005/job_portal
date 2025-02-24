@@ -25,7 +25,10 @@ export const allJobsAdded=async(jobDetails)=>{
     return await axiosConnection("post",'/jobs',jobDetails)
 }
 
-
 export const fetchAllJobs=async()=>{
     return await axiosConnection("get",'/jobs',"")
+}
+
+export const appliedJobUser=async(id,appliedJob)=>{
+    return await axiosConnection("put",`/users/${id}`,appliedJob)
 }
