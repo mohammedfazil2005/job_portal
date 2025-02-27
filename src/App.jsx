@@ -14,6 +14,8 @@ import Footer from "./components/footer/Footer";
 import Login from "./components/login/Login";
 import { ToastContainer, toast } from 'react-toastify';
 import DisplayJob from "./components/displayjob/DisplayJob";
+import AppliedJobs from "./components/appliedjobs/AppliedJobs";
+import Applicants from "./components/applicants/Applicants";
 
 function App() {
   const [show, setShow] = useState(false);
@@ -34,6 +36,8 @@ function App() {
       <Route path="/uploadjobs" element={<UploadJobs userID={userID}/>}/>
       <Route path="/profile" element={<Profile  showProfile={showProfile} logout={logout}/>} />
       <Route path="/displayjob" element={<DisplayJob userID={userID}/>}/>
+      <Route path="/applicants" element={<Applicants userID={userID}/>}/>
+      <Route path="/appliedjobs" element={<AppliedJobs userID={userID}/>}/>
     </Routes>
     <hr />
     <Footer/>

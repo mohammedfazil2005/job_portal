@@ -30,6 +30,7 @@ const AllJobsMain = ({ search,setSearch ,Uid}) => {
   }
 
   const applyJob = (jobDetails) => {
+   
     if(Uid){
       sessionStorage.setItem("jobdetails",JSON.stringify(jobDetails))
       navigate('/displayjob')

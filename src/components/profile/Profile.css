@@ -35,8 +35,9 @@
 
 }
 .profile-icon-div img{
-    width: 200px;
-    border-radius: 10%;
+    width: 130px;
+    height: 120px;
+    border-radius: 50%;
 }
 .profile-detail-div{
     display: flex;

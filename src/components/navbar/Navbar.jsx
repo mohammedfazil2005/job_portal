@@ -44,6 +44,8 @@ const Navbar = ({setShow,logout,setLogout,showProfile}) => {
                         <ul className="navbar-nav m-auto mb-2 mb-lg-0">
                         <Link to={'/jobs'}><li>Find Job</li></Link> 
                          <Link to={'/uploadjobs'}><li>Upload Job</li></Link> 
+                        <Link to={'/appliedjobs'}> <li>Applied Jobs</li></Link>
+                        <Link to={'/applicants'}> <li>Applied Candidates</li></Link>
                           
                         </ul>
                          <div className="login-btn-fiv">
