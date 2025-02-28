@@ -16,12 +16,14 @@ import { ToastContainer, toast } from 'react-toastify';
 import DisplayJob from "./components/displayjob/DisplayJob";
 import AppliedJobs from "./components/appliedjobs/AppliedJobs";
 import Applicants from "./components/applicants/Applicants";
+import ViewProfile from "./components/viewUserProfile/ViewProfile";
 
 function App() {
   const [show, setShow] = useState(false);
   const [showProfile,setShowProfile]=useState("")
   const [logout,setLogout]=useState("")
   const [category,setCategory]=useState("")
+  const [userProfileID,setUserProfileID]=useState("")
   const userID=localStorage.getItem("id")
  
 
@@ -36,23 +38,12 @@ function App() {
       <Route path="/uploadjobs" element={<UploadJobs userID={userID}/>}/>
       <Route path="/profile" element={<Profile  showProfile={showProfile} logout={logout}/>} />
       <Route path="/displayjob" element={<DisplayJob userID={userID}/>}/>
-      <Route path="/applicants" element={<Applicants userID={userID}/>}/>
+      <Route path="/applicants" element={<Applicants userID={userID} setUserProfileID={setUserProfileID}/>}/>
       <Route path="/appliedjobs" element={<AppliedJobs userID={userID}/>}/>
+      <Route path="/viewProfile" element={<ViewProfile/>} userProfileID={userProfileID}/>
     </Routes>
     <hr />
     <Footer/>
-
-
-
-
-
-
-
-
-
-    
-
-    
     </>
   )
 }

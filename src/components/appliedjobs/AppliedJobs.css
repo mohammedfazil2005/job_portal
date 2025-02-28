@@ -1,4 +1,18 @@
 .job-table{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     margin: 0px 30px;
-    margin-top: 30px;
+}
+
+.job-table-details{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    border-bottom: 1px solid lightgray;
+}
+
+.job-table-details img{
+    width: 60px;
+    height: 60px;
 }

@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import './Applicants.css'
 import { userProfile } from '../../services/functionAPI'
-const Applicants = ({ userID }) => {
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
+const Applicants = ({ userID,setUserProfileID }) => {
 
     const [applicant, setApplicants] = useState([])
+    const navigate=useNavigate()
 
     const fetchApplicants = async () => {
         if (userID) {
@@ -14,7 +17,16 @@ const Applicants = ({ userID }) => {
             } catch (error) {
                 console.log(error)
             }
+        }else{
+            toast.warning("Login to continue")
+            navigate('/')
         }
+    }
+
+    const fetchUserResume=(id)=>{
+        setUserProfileID(id)
+        navigate('/viewProfile',{state:{userProfileID:id}})
+
     }
 
     useEffect(() => {
@@ -30,7 +42,7 @@ const Applicants = ({ userID }) => {
 
 
         <div className='applied-jobs-parent'>
-            {applicant ? applicant.map((a, index) => {
+            {applicant.length>0 ? applicant.map((a, index) => {
                 const { applicants } = a
                 return (
                     applicants.map((b) => (
@@ -48,7 +60,7 @@ const Applicants = ({ userID }) => {
                                     <h5>{a.jobData.companyName}</h5>
                                 </div>
                                 <div>
-                                    <button className='btn btn-primary'>View profile</button>
+                                    <button className='btn btn-primary ' onClick={()=>fetchUserResume(b.applicantID)}>View profile</button>
                                 </div>
                             </div>
                         </div>
