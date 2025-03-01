@@ -60,17 +60,7 @@ const DisplayJob = ({ userID }) => {
          }
 
       }
-   
-
-
-
-
-
-
-
-
-
-     
+  
 
 
     } catch (error) {

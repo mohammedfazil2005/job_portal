@@ -132,55 +132,48 @@ console.log(logout)
   
   return (
     <>
-    <div className='profile-section-parent'>
-      <div className="profile-section-child">
-        <div>
-          <div className="profile-icon-div">
-            <img src={profile.imageURL?profile.imageURL:"https://t4.ftcdn.net/jpg/03/32/59/65/360_F_332596535_lAdLhf6KzbW6PWXBWeIFTovTii1drkbT.jpg"} alt="" />
-            <button className='btn btn-primary' onClick={handleShowImage}>Change</button>
-          </div>
-          <div className="profile-detail-div">
-            <div className='update-name-div'>
-              <h6><i className="fa-solid fa-graduation-cap"></i>{profile.name?profile.name:"Full Name"}</h6>
-              <button><i className="fas fa-edit" onClick={handleShow}></i></button>
-            </div>
-           <div className="profile-other-details">
-           <h6><i className="fa-solid fa-map-pin"></i>{profile.headline?profile.headline:"Professional Headline!"}</h6>
-            <h6><i className="fa-solid fa-envelope"></i>{profile.email?profile.email:"Your Email Address!"}</h6>
-            <h6><i className="fa-solid fa-phone"></i>{profile.phone?profile.phone:"Your Phone Number!"}</h6>
-            <h6><i className="fa-solid fa-location-dot"></i>{profile.location?profile.location:"Your Location!"}</h6>
-           </div>
-             <div className='desg-details'>
-              <h3><i className="fa-solid fa-book"></i> Education</h3>
-              <ul>
-              {profile.education?profile.education.split("\n").map((a,index)=>(
-                <li key={index}>{a}</li>
-              )):""}
-              </ul>
-             </div>
-             <div className='desg-details'>
-              <h3><i className="fa-solid fa-suitcase"></i>Experience</h3>
-              <ul>
-              {profile.experience?profile.experience.split("\n").map((a,index)=>(
-                 <li key={index}>{a}</li>
-              )):""}
-              </ul>
-             </div>
-             <div className='desg-details'>
-              <h3><i className="fa-solid fa-marker"></i>Skills</h3>
-             <ul>
-             {profile.skills?profile.skills.split("\n").map((a,index)=>(
-                 <li key={index}>{a}</li>
-              )):""}
-             </ul>
-             </div>
+    <div>
+          {profile? <div className='display-job-parent'>
+                    <div className="display-job-left-2">
           
-
-          </div>
-
+                      <img src={profile.imageURL?profile.imageURL:""} alt="Add your image!" />
+                      <button className='btn btn-primary mt-2' onClick={handleShowImage}>Change</button>
+                      
+                    </div>
+                    <div className="display-job-right">
+                      <div className='edit-div'>
+                      <h5>User Information:</h5>
+                      <button className='btn btn-primary' onClick={handleShow}>Edit profile</button>
+                      </div>
+                      <div className="display-job-details-2">
+                        <p><span>Name:  </span>{profile.name?profile.name:"Full Name"}</p>
+                        <p><span>Title:</span> {profile.headline?profile.headline:"Title"}</p>
+                        <p><span>Location</span>{profile.location?profile.location:"Location"}</p>
+                        <p><span>Mail:</span>{profile.email?profile.email:"Email"}</p>
+                        <p><span>Phone:</span>+91 {profile.phone?profile.phone:"Phone"}</p>
+                      </div>
+                      <h5 className='mt-3'>Qualifications</h5>
+                      <div className="display-job-description-2">
+                          {profile?profile.education?profile.education.split('\n').map((a,index)=>(
+                            <p key={index}>{a}</p>
+                          )):"":""}
+                        </div>
+                        <h5 className='mt-3'>Skills</h5>
+                        <div className="display-job-description-2">
+                        {profile?profile.skills?profile.skills.split('\n').map((a,index)=>(
+                          <p key={index}>{a}</p>
+                        )):"":""}
+                        </div>
+                        <h5 className='mt-3'>Experience</h5>
+                        <div className="display-job-description-2">
+                        {profile?profile.experience?profile.experience.split('\n').map((a,index)=>(
+                          <p key={index}>{a}</p>
+                        )):"":""}
+                      </div>
+                      
+                    </div>
+                  </div>:"Data not found"}
         </div>
-      </div>
-    </div>
     <Modal show={show} onHide={handleClose} size='lg'>
         <Modal.Header closeButton>
           <Modal.Title>Edit Profile!</Modal.Title>

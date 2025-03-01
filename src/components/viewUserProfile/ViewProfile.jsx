@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './ViewProfile.css'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { fetchAllJobs, userProfile, userProfileUpdate } from '../../services/functionAPI'
 import emailjs from '@emailjs/browser'
 import { toast } from 'react-toastify'
@@ -12,6 +12,7 @@ const ViewProfile = ({userID}) => {
     const [data,setData]=useState(null)
     const [adminData,setAdminData]=useState({})
     const [jobs,setJobs]=useState([])
+    const navigate=useNavigate()
 
 
     const [formData,setFormData]=useState({
@@ -22,11 +23,15 @@ const ViewProfile = ({userID}) => {
     })
 
         const fetchUserProfile=async()=>{
-           try {
-            const serverResponce=await userProfile(userProfileID)
-            setData(serverResponce.data)
-           } catch (error) {
-            console.log(error)
+           if(userID){
+            try {
+              const serverResponce=await userProfile(userProfileID)
+              setData(serverResponce.data)
+             } catch (error) {
+              console.log(error)
+             }
+           }else{
+            navigate('/')
            }
         }
 
