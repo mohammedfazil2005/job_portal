@@ -40,7 +40,7 @@ function App() {
       <Route path="/displayjob" element={<DisplayJob userID={userID}/>}/>
       <Route path="/applicants" element={<Applicants userID={userID} setUserProfileID={setUserProfileID}/>}/>
       <Route path="/appliedjobs" element={<AppliedJobs userID={userID}/>}/>
-      <Route path="/viewProfile" element={<ViewProfile/>} userProfileID={userProfileID}/>
+      <Route path="/viewProfile" element={<ViewProfile userID={userID} />}/>
     </Routes>
     <hr />
     <Footer/>

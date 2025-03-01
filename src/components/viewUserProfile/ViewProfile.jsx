@@ -1,56 +1,127 @@
 import React, { useEffect, useState } from 'react'
 import './ViewProfile.css'
 import { useLocation } from 'react-router-dom'
-import { userProfile } from '../../services/functionAPI'
-const ViewProfile = () => {
+import { fetchAllJobs, userProfile, userProfileUpdate } from '../../services/functionAPI'
+import emailjs from '@emailjs/browser'
+import { toast } from 'react-toastify'
+
+const ViewProfile = ({userID}) => {
 
     const location=useLocation()
     const userProfileID=location.state.userProfileID
     const [data,setData]=useState(null)
+    const [adminData,setAdminData]=useState({})
+    const [jobs,setJobs]=useState([])
+
+
+    const [formData,setFormData]=useState({
+      applicantname:"",
+      recruitername:"",
+      applicantmail:"",
+      message:""
+    })
 
         const fetchUserProfile=async()=>{
            try {
             const serverResponce=await userProfile(userProfileID)
-            setData(serverResponce.data.userProfile)
+            setData(serverResponce.data)
            } catch (error) {
             console.log(error)
            }
         }
 
-        console.log(data)
+        const fetchAdminProfile=async()=>{
+          try {
+            const serverResponce=await userProfile(userID)
+            const fetchJob=await fetchAllJobs()
+            setAdminData(serverResponce.data)
+            setJobs(fetchJob.data)
+         
+          } catch (error) {
+            console.error(error);
+            
+          }
+        }
+      
+
+
+
+        const hireButton=async()=>{
+          if(data&&adminData){
+            try {
+              const responce=await emailjs.send("service_deeor5g","template_fsk9gp8",formData,"mqBz8NAq2FOffELx6")
+              const find=data.userAppliedJobs.find((a)=>a['jobId']=="4d43")
+              find.status="Check email!"
+              await userProfileUpdate(userProfileID,data)
+              toast.success("Email sent success")
+            
+            } catch (error) {
+              console.log(error)
+            }
+            
+          
+           
+            
+          }
+        }
+
+
+
+
 
     useEffect(()=>{
         fetchUserProfile()
+        fetchAdminProfile()
+        
     },[])
+
+    useEffect(() => {
+      if (data && adminData) {
+        setFormData({
+          applicantname: data.userProfile.name || "",
+          recruitername: adminData?.userProfile?.name || "",
+          applicantmail:data.userProfile.email||"",
+          message: `Thank you for reaching out to us! We have reviewed your application and are interested in learning more about you. We’d love to schedule a discussion to explore this opportunity further. Please let us know your availability for a quick chat. You can reach us at ${adminData?.userProfile?.email||""} Looking forward to connecting with you!`
+        });
+      }
+    }, [data, adminData]);
 
   return (
     <div>
       {data? <div className='display-job-parent'>
                 <div className="display-job-left-2">
       
-                  <img src={data.imageURL?data.imageURL:""} alt="ss" />
-                  {/* <h1>{data.name}</h1>
-                  <div>
-                    <p><i className="fa-solid fa-building"></i>{data.headline}</p>
-                    <p><i className="fa-solid fa-location-dot"></i>{data.location}</p>
-                  </div> */}
+                  <img src={data.userProfile.imageURL?data.userProfile.imageURL:""} alt="ss" />
+                  
                 </div>
                 <div className="display-job-right">
-                  <h6>User Information:</h6>
-                  <div className="display-job-details">
-      
-                
-      
-      
-      
+                  <h5>User Information:</h5>
+                  <div className="display-job-details-2">
+                    <p><span>Name:  </span>{data.userProfile.name}</p>
+                    <p><span>Title:</span> {data.userProfile.headline}</p>
+                    <p><span>Location</span>{data.userProfile.location}</p>
+                    <p><span>Contact:</span>{data.userProfile.phone}</p>
                   </div>
-                  <h6>Job Description:</h6>
-                  <div className="display-job-description">
-                    <p>One disadvantage of Lorum Ipsum is that in Latin certain letters appear more frequently than others - which creates a distinct visual impression. Moreover, in Latin only words at the beginning of sentences are capitalized.</p>
+                  <h5 className='mt-3'>Qualifications</h5>
+                  <div className="display-job-description-2">
+                      {data.userProfile.education.split('\n').map((a,index)=>(
+                        <p key={index}>{a}</p>
+                      ))}
+                    </div>
+                    <h5 className='mt-3'>Skills</h5>
+                    <div className="display-job-description-2">
+                    {data.userProfile.skills.split('\n').map((a,index)=>(
+                      <p key={index}>{a}</p>
+                    ))}
+                    </div>
+                    <h5 className='mt-3'>Experience</h5>
+                    <div className="display-job-description-2">
+                    {data.userProfile.experience.split('\n').map((a,index)=>(
+                      <p key={index}>{a}</p>
+                    ))}
                   </div>
                   <div className="display-apply-button">
-      
-                    <button className='btn btn-primary' >Hire now!</button>
+                    <button className='btn btn-primary' onClick={hireButton}>Hire now!</button>
                   </div>
                 </div>
               </div>:"Data not found"}
