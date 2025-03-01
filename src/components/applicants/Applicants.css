@@ -28,3 +28,9 @@
     font-weight: bolder;
 
 }
+
+@media screen and (max-width:838px) {
+    .notfound-div img{
+        width: 100%;
+    }
+}

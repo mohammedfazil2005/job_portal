@@ -39,6 +39,8 @@ const AppliedJobs = ({ userID }) => {
   
   }
 
+ 
+
 
   
 
@@ -51,12 +53,11 @@ const AppliedJobs = ({ userID }) => {
 
     return (
         <div className='job-table'>
-         {job.map((a,index)=>{
+         {job.length>0?job.map((a,index)=>{
           let comparedVJob=filterJobs.filter((b)=>b.id==a.jobId)
           return(
            comparedVJob.map((b)=>(
             <div className='job-table-details' key={index+1}>
-             {/* <img src="https://globalcybersecuritynetwork.com/wp-content/uploads/2023/03/nexxt-logo-job-platform.png" alt="" /> */}
             
              <img src={b.jobData.companyLogo} alt="" />
              <div>
@@ -72,7 +73,9 @@ const AppliedJobs = ({ userID }) => {
           )
          
         
-         })}
+         }):<div className='text-center mb-5 mt-3 notfound-div'>
+         <img src="https://cdn.dribbble.com/users/453325/screenshots/5573953/empty_state.png" alt="" />
+        </div>}
         </div>
 
     )

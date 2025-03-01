@@ -13,7 +13,7 @@ const Applicants = ({ userID,setUserProfileID }) => {
             try {
                 const serverResponce = await userProfile(userID)
                 setApplicants(serverResponce.data.userJobs)
-                console.log(serverResponce.data)
+               
             } catch (error) {
                 console.log(error)
             }
@@ -28,6 +28,7 @@ const Applicants = ({ userID,setUserProfileID }) => {
         navigate('/viewProfile',{state:{userProfileID:id}})
 
     }
+    console.log(applicant)
 
     useEffect(() => {
         fetchApplicants()
@@ -67,9 +68,10 @@ const Applicants = ({ userID,setUserProfileID }) => {
                     ))
 
                 )
-            }) : <div className='d-flex justify-content-center'>
-                <img src="https://www.dochipo.com/wp-content/uploads/2024/01/404-Error-Animation-4.gif" className='w-25' alt="" />
-            </div>}
+            }) : <div className='text-center mb-5 mt-3 notfound-div'>
+            <img src="https://cdn.dribbble.com/users/453325/screenshots/5573953/empty_state.png" alt="" />
+            <p>hs</p>
+           </div>}
         </div>
 
 

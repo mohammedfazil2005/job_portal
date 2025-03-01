@@ -162,13 +162,13 @@ console.log(logout)
                         <div className="display-job-description-2">
                         {profile?profile.skills?profile.skills.split('\n').map((a,index)=>(
                           <p key={index}>{a}</p>
-                        )):"":""}
+                        )):"Add your skills!":""}
                         </div>
                         <h5 className='mt-3'>Experience</h5>
                         <div className="display-job-description-2">
                         {profile?profile.experience?profile.experience.split('\n').map((a,index)=>(
                           <p key={index}>{a}</p>
-                        )):"":""}
+                        )):"Add your experience!":""}
                       </div>
                       
                     </div>

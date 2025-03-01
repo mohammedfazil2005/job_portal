@@ -54,12 +54,20 @@ const ViewProfile = ({userID}) => {
         const hireButton=async()=>{
           if(data&&adminData){
             try {
-              const responce=await emailjs.send("service_deeor5g","template_fsk9gp8",formData,"mqBz8NAq2FOffELx6")
-              const find=data.userAppliedJobs.find((a)=>a['jobId']=="4d43")
-              find.status="Check email!"
-              await userProfileUpdate(userProfileID,data)
-              toast.success("Email sent success")
+              const find = data.userAppliedJobs.find((a) => 
+                jobs.some(job => String(job.id) === String(a['jobId']))
+              );
+              if(find.status=="Check email!"){
+                toast.error("Already Hired!")
+              }else{
+                console.log(find)
+                find.status="Check email!"
+                await userProfileUpdate(userProfileID,data)
+                const responce=await emailjs.send("service_deeor5g","template_fsk9gp8",formData,"mqBz8NAq2FOffELx6")
+                toast.success("Email sent success")
+              }
             
+              
             } catch (error) {
               console.log(error)
             }

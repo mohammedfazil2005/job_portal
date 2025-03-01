@@ -4,7 +4,7 @@ import './AllJobsContent.css'
 import AllJobsMain from '../alljobsMain/AllJobsMain'
 import AllJobsCategory from '../alljobscategory/AllJobsCategory'
 
-const AllJobsContent = ({search,setSearch,Uid}) => {
+const AllJobsContent = ({search,setSearch,Uid,setCategory,category,setReset,reset}) => {
   return (
     <div>
       <div className='heading-job-content'>
@@ -12,8 +12,8 @@ const AllJobsContent = ({search,setSearch,Uid}) => {
         <button className='btn btn-light'>Most recent</button> */}
       </div>
       <div className='main-job-content'>
-      <AllJobsCategory/>
-      <AllJobsMain search={search} setSearch={setSearch} Uid={Uid}/>
+      <AllJobsCategory setCategory={setCategory} setReset={setReset} setSearch={setSearch}/>
+      <AllJobsMain search={search} setSearch={setSearch} Uid={Uid} category={category} reset={reset}/>
       
       </div>
       

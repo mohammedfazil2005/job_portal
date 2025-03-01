@@ -28,6 +28,14 @@
 .category-list p{
     cursor: pointer;
 }
+.selected-category {
+    border-bottom: 2px solid gray;
+    transition: border-bottom 0.2s ease-in-out;
+}
+#reset{
+    color: red;
+}
+
 @media screen and (max-width:886px) {
     .category-parent{
         display: flex;

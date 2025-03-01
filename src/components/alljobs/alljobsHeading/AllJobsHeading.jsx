@@ -3,16 +3,23 @@ import './AllJobsHeading.css'
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-const AllJobsHeading = ({setSearch}) => {
+const AllJobsHeading = ({setSearch,setCategory,setReset}) => {
 
   const [value,setValue]=useState("")
 
   const onSearch=()=>{
     if(value){
       setSearch(value)
-      
+    setCategory("")
+    
     }
     setValue("")
+  }
+
+  const handleKeyDown=(e)=>{
+    if(e.key=="Enter"){
+      onSearch()
+    }
   }
 
 
@@ -31,9 +38,9 @@ const AllJobsHeading = ({setSearch}) => {
         className="mb-2 w-100"
         
       >
-        <Form.Control type="text"  value={value} placeholder="Job title or Keyword" style={{borderRadius:'70px'}} onChange={(e)=>setValue(e.target.value)} />
+        <Form.Control type="text" onKeyDown={handleKeyDown}  value={value} placeholder="Job title or Keyword" style={{borderRadius:'70px'}} onChange={(e)=>setValue(e.target.value)} />
       </FloatingLabel>
-      <button onClick={onSearch}><i className="fa-solid fa-magnifying-glass"></i></button>
+      <button onClick={onSearch} ><i className="fa-solid fa-magnifying-glass"></i></button>
         </div>
       </div>
     </div>

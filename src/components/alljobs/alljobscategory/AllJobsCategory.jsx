@@ -1,26 +1,34 @@
 import React, { use, useState } from 'react'
 import './AllJobsCategory.css'
 
-const AllJobsCategory = () => {
+const AllJobsCategory = ({setCategory,setReset,setSearch}) => {
 
-    const tempCategoryData=["Default","Full time","Part time","Internship"]
+    const tempCategoryData=["Full time","Part time","Internship"]
 
     const [cat,setCat]=useState("")
     
     const changedCat=(a)=>{
         setCat(a)
+        setCategory(a)
+        setSearch("")
     }
-    console.log(cat)
+    const onReset=()=>{
+        setCategory("")
+        setCat("")
+        setReset("")
+    }
 
   return (
     <div className='category-parent'>
         <div className="category-heading">
             <h6>Job Type</h6>
-        
+          
         </div>
+        <p onClick={onReset} id='reset'>Reset ()</p>
         <div className="category-list">
             {tempCategoryData.map((a,index)=>(
-                <p key={index} onClick={()=>changedCat(a)} style={cat==a?{borderBottom:'2px solid gray'}:{}}>{a}</p>
+                <p key={index}  onClick={() => changedCat(a)} 
+                className={cat === a ? "selected-category" : ""}>{a}</p>
             ))}
         </div>
      

@@ -6,7 +6,7 @@ import { CircularProgress } from '@mui/material'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-const AllJobsMain = ({ search,setSearch ,Uid}) => {
+const AllJobsMain = ({ search,setSearch ,Uid,category,reset}) => {
 
   const [job, setJob] = useState([])
   const navigate=useNavigate()
@@ -21,9 +21,21 @@ const AllJobsMain = ({ search,setSearch ,Uid}) => {
     }
   }
 
-  let trim = search.trim()
+  console.log(category.length)
+  console.log(job)
+  
 
-  const filterdJob = trim ? job.filter((a) => a.jobData.jobTitle.toLowerCase().includes(search.toLowerCase())) : job
+  const filterdJob = job.filter((a) => {
+    const matchesSearch = search.length > 0 
+      ? a.jobData?.jobTitle?.toLowerCase().includes(search.toLowerCase()) 
+      : true; 
+  
+    const matchesCategory = category.length > 0 
+      ? a.jobData?.jobType?.toLowerCase().includes(category.toLowerCase()) 
+      : true;
+  
+    return matchesSearch && matchesCategory; // Ensure both conditions are applied properly
+  });
 
   const clearFiltered=()=>{
     setSearch("")
@@ -43,7 +55,7 @@ const AllJobsMain = ({ search,setSearch ,Uid}) => {
 
   useEffect(() => {
     fetchJobs()
-  }, [search])
+  }, [search,category,reset])
 
 
 
@@ -84,10 +96,9 @@ const AllJobsMain = ({ search,setSearch ,Uid}) => {
               </div>
             )
           })
-        ) :<div className='error-image'>
-          <button className='btn btn-primary' onClick={clearFiltered}>Back to home</button>
-           <img src="https://www.dochipo.com/wp-content/uploads/2024/01/404-Error-Animation-4.gif" alt="" />
-        </div>
+        ) :<div className='text-center mb-5 mt-3 notfound-div'>
+        <img src="https://cdni.iconscout.com/illustration/premium/thumb/nothing-found-here-illustration-download-in-svg-png-gif-file-formats--connection-error-404-not-pack-design-development-illustrations-6209371.png" alt="" />
+       </div>
 
       ) : <CircularProgress />}
 
