@@ -58,7 +58,7 @@ const Applicants = ({ userID,setUserProfileID }) => {
                                 </div>
                                 <div>
 
-                                    <h5>{a.jobData.companyName}</h5>
+                                    <h5><i className="fa-solid fa-building"></i>{a.jobData.companyName}</h5>
                                 </div>
                                 <div>
                                     <button className='btn btn-primary ' onClick={()=>fetchUserResume(b.applicantID)}>View profile</button>

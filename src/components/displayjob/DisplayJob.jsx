@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react'
 import './DisplayJob.css'
 import moment from 'moment'
 import { CircularProgress } from '@mui/material'
-import { fetchAllJobbByID, fetchUserAddedJobs, updateJobByID, userProfile, userProfileUpdate } from '../../services/functionAPI'
+import { deleteJobById, fetchAllJobbByID, fetchUserAddedJobs, updateJobByID, userProfile, userProfileUpdate } from '../../services/functionAPI'
 import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
 const DisplayJob = ({ userID }) => {
 
   const [data, setData] = useState(null)
   const [recruiterJobList, setRecruiterJobList] = useState({})
+  const navigate=useNavigate()
 
 
   const fetchJob = async () => {
@@ -68,7 +70,17 @@ const DisplayJob = ({ userID }) => {
     }
   }
 
-  console.log(recruiterJobList)
+  const deleteJob=async(id)=>{
+ try {
+  await deleteJobById(id)
+  toast.success("Job deleted!")
+  navigate('/jobs')
+ } catch (error) {
+  console.log(error)
+ }
+
+  }
+
 
 
   useEffect(() => {
@@ -78,12 +90,11 @@ const DisplayJob = ({ userID }) => {
 
   return (
     <>
-      {data ? (
-        <div className='display-job-parent'>
+      {data ? <div className='display-job-parent'>
           <div className="display-job-left">
 
             <img src={data.jobData.companyLogo} alt="" />
-            <h1>Front end developer</h1>
+            <h1>{data.jobData.jobTitle}</h1>
             <div>
               <p><i className="fa-solid fa-building"></i>{data.jobData.companyName} pvt.ltd</p>
               <p><i className="fa-solid fa-location-dot"></i>{data.jobData.jobLocation}</p>
@@ -171,14 +182,14 @@ const DisplayJob = ({ userID }) => {
               <p>One disadvantage of Lorum Ipsum is that in Latin certain letters appear more frequently than others - which creates a distinct visual impression. Moreover, in Latin only words at the beginning of sentences are capitalized.</p>
             </div>
             <div className="display-apply-button">
-
-              <button className='btn btn-primary' disabled={userID == data.userID} onClick={() => applyJob(data)}>Apply Now</button>
+              {userID == data.userID?<button className='btn btn-danger'onClick={()=>deleteJob(data.id)} >Delete</button>:<button className='btn btn-primary'  onClick={() => applyJob(data)}>Apply Now</button>}
+              
+             
             </div>
           </div>
-        </div>
-      ) : (
+        </div>:
         <CircularProgress />
-      )}
+      }
     </>
   )
 }

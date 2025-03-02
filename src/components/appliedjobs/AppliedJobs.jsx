@@ -53,6 +53,7 @@ const AppliedJobs = ({ userID }) => {
 
     return (
         <div className='job-table'>
+          
          {job.length>0?job.map((a,index)=>{
           let comparedVJob=filterJobs.filter((b)=>b.id==a.jobId)
           return(
@@ -62,7 +63,7 @@ const AppliedJobs = ({ userID }) => {
              <img src={b.jobData.companyLogo} alt="" />
              <div>
             <h6>{b.jobData.jobTitle}</h6>
-            <h6>{a.status}</h6>
+            <h6>{a.status} <i className={`fa-solid fa-circle ${a.status=="pending"?'text-danger':'text'}`}></i></h6>
              </div>
             
             

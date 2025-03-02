@@ -15,11 +15,14 @@
 }
 
 .job-table-details img{
-    width: 60px;
-    height: 50px;
+    width: 50px;
+    height: 30px;
 }
 
 .job-table-details div{
     display: flex;
     flex-direction: column;
+}
+.job-table-details h6 i{
+    margin-left: 20px;
 }

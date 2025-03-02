@@ -15,7 +15,9 @@ const AllJobsCategory = ({setCategory,setReset,setSearch}) => {
     const onReset=()=>{
         setCategory("")
         setCat("")
+        setSearch("")
         setReset("")
+        
     }
 
   return (

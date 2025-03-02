@@ -41,6 +41,11 @@ footer{
 }
 .footer-details p{
     letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.footer-details p:hover{
+    letter-spacing: 0px;
 }
 .footer-details h5{
     text-align: center;

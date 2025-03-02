@@ -16,7 +16,7 @@
 
 .applied-jobs-child  img{
     width: 70px;
-    height: 70px;
+    height: 60px;
     border-radius: 50%;
 }
 .details-applied{
@@ -25,7 +25,12 @@
    
 }
 .details-applied h5{
-    font-weight: bolder;
+    
+}
+.details-applied h5 i{
+    margin-right: 4px;
+    font-size: 10px;
+    
 
 }
 

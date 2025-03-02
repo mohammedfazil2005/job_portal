@@ -55,7 +55,7 @@ const ViewProfile = ({userID}) => {
           if(data&&adminData){
             try {
               const find = data.userAppliedJobs.find((a) => 
-                jobs.some(job => String(job.id) === String(a['jobId']))
+                jobs.find(job => String(job.id) === String(a['jobId']))
               );
               if(find.status=="Check email!"){
                 toast.error("Already Hired!")
@@ -63,7 +63,7 @@ const ViewProfile = ({userID}) => {
                 console.log(find)
                 find.status="Check email!"
                 await userProfileUpdate(userProfileID,data)
-                const responce=await emailjs.send("service_deeor5g","template_fsk9gp8",formData,"mqBz8NAq2FOffELx6")
+                await emailjs.send("service_deeor5g","template_fsk9gp8",formData,"mqBz8NAq2FOffELx6")
                 toast.success("Email sent success")
               }
             
