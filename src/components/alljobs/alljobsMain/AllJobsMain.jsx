@@ -37,9 +37,7 @@ const AllJobsMain = ({ search,setSearch ,Uid,category,reset}) => {
     return matchesSearch && matchesCategory; // Ensure both conditions are applied properly
   });
 
-  const clearFiltered=()=>{
-    setSearch("")
-  }
+
 
   const applyJob = (jobDetails) => {
    

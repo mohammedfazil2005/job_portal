@@ -40,3 +40,7 @@ export const updateJobByID=async(id,details)=>{
 export const fetchAllJobbByID=async(id)=>{
     return await axiosConnection("get",`/jobs/${id}`,"")
 }
+
+export const deleteJobById=async(id)=>{
+    return await axiosConnection("delete",`/jobs/${id}`,{})
+}
